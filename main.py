@@ -56,7 +56,7 @@ def main():
 
         date = system.change_date()
 
-        numCommits = random.randint(-5, 6)
+        numCommits = random.randint(-35, 8)
 
         if numCommits < 0: numCommits = 0
 
