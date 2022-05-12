@@ -25,6 +25,7 @@ import statistics
 from build import GithubFillerConfig
 from src import GitBuilder
 from src import DateChanger
+import random
 
 ROOT_PATH = Path(__file__).parents[0]
 FILES_DIR = ROOT_PATH / "files"
@@ -44,7 +45,7 @@ def main():
 
     git.init_repository()
 
-    git.set_remote_repository(params["repository"])
+    git.set_remote_repository("https://github.com/g4rr3t/kubernetes_project.git")
 
     time_records = []
     day_counter = 0
@@ -55,7 +56,11 @@ def main():
 
         date = system.change_date()
 
-        for _ in range(git.get_commits_number()):
+        numCommits = random.randint(-30, 6)
+
+        if numCommits < 0: numCommits = 0
+
+        for _ in range(numCommits):
 
             git.execute(push=False, date=date)
 
